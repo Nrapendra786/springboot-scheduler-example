@@ -24,23 +24,23 @@ public class CustomTriggerFactory {
     @Autowired
     private Environment environment;
 
-//    @Bean
-//    public SimpleTriggerFactoryBean simpleTriggerFactoryDataWareHouseBean() {
-//        SimpleTriggerFactoryBean simpleTriggerFactoryBean = new SimpleTriggerFactoryBean();
-//        JobDetail dataWareHouseJobDetail = customJobDetailFactory.dataWareHouseJob().getObject();
-//        simpleTriggerFactoryBean.setJobDetail(dataWareHouseJobDetail);
-//        simpleTriggerFactoryBean.setRepeatInterval(Long.parseLong(environment.getProperty(TriggerUtil.DATA_WARE_HOUSE_SIMPLE_TRIGGER_REPEAT_INTERVAL)));
-//        return simpleTriggerFactoryBean;
-//    }
-//
-//    @Bean
-//    public SimpleTriggerFactoryBean simpleTriggerFactoryEmailBean() {
-//        SimpleTriggerFactoryBean simpleTriggerFactoryBean = new SimpleTriggerFactoryBean();
-//        JobDetail emailJobDetail = customJobDetailFactory.emailJob().getObject();
-//        simpleTriggerFactoryBean.setJobDetail(emailJobDetail);
-//        simpleTriggerFactoryBean.setRepeatInterval(Long.parseLong(environment.getProperty(TriggerUtil.EMAIL_SIMPLE_TRIGGER_REPEAT_INTERVAL)));
-//        return simpleTriggerFactoryBean;
-//    }
+    @Bean
+    public SimpleTriggerFactoryBean simpleTriggerFactoryDataWareHouseBean() {
+        SimpleTriggerFactoryBean simpleTriggerFactoryBean = new SimpleTriggerFactoryBean();
+        JobDetail dataWareHouseJobDetail = customJobDetailFactory.dataWareHouseJob().getObject();
+        simpleTriggerFactoryBean.setJobDetail(dataWareHouseJobDetail);
+        simpleTriggerFactoryBean.setRepeatInterval(Long.parseLong(environment.getProperty(TriggerUtil.DATA_WARE_HOUSE_SIMPLE_TRIGGER_REPEAT_INTERVAL)));
+        return simpleTriggerFactoryBean;
+    }
+
+    @Bean
+    public SimpleTriggerFactoryBean simpleTriggerFactoryEmailBean() {
+        SimpleTriggerFactoryBean simpleTriggerFactoryBean = new SimpleTriggerFactoryBean();
+        JobDetail emailJobDetail = customJobDetailFactory.emailJob().getObject();
+        simpleTriggerFactoryBean.setJobDetail(emailJobDetail);
+        simpleTriggerFactoryBean.setRepeatInterval(Long.parseLong(environment.getProperty(TriggerUtil.EMAIL_SIMPLE_TRIGGER_REPEAT_INTERVAL)));
+        return simpleTriggerFactoryBean;
+    }
 
     @Bean
     public CronTriggerFactoryBean cronTriggerFactoryEmailBean() {
