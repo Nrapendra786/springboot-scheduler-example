@@ -1,7 +1,7 @@
 package com.optile.task.utils;
 
 /**
- * Created by NrapendraKumar on 08-10-2016.
+ * Created by NrapendraKumar
  */
 public class TriggerUtil {
 

@@ -2,6 +2,7 @@ package com.optile.task.factories;
 
 import com.optile.task.jobs.DataWareHouseJob;
 import com.optile.task.jobs.EmailJob;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -9,12 +10,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 
 /**
- * Created by NrapendraKumar on 05-10-2016.
+ * Created by NrapendraKumar
  */
 @Configuration
+@Slf4j
 public class CustomJobDetailFactory {
-
-    private static final Logger logger = LoggerFactory.getLogger(CustomJobDetailFactory.class.getName());
 
     @Bean
     public JobDetailFactoryBean emailJob() {

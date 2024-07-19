@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 /**
- * Created by NrapendraKumar on 06-10-2016.
+ * Created by NrapendraKumar
  */
 @RestController
 public class JobStatusController {
@@ -24,9 +24,8 @@ public class JobStatusController {
 
     @RequestMapping(name = AppUtil.JOB_STATUS_URL , method= RequestMethod.GET)
     public @ResponseBody String getJobStatus() throws JsonProcessingException {
-        Map<String,JobStatusEnum> jobStatusEnumMap =  jobStatusService.getJobStatusMap();
+        Map<String,JobStatusEnum> jobStatusEnumMap =  JobStatusService.jobStatusMap;
         ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(jobStatusEnumMap);
-        return json;
+        return objectMapper.writeValueAsString(jobStatusEnumMap);
     }
 }

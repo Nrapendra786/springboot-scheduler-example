@@ -1,10 +1,9 @@
 package com.optile.task.utils;
 
 /**
- * Created by NrapendraKumar on 06-10-2016.
+ * Created by NrapendraKumar
  */
 public class AppUtil {
-    public static final String SLASH = "/";
     public static final String JOB_STATUS_URL = "/jobStatus";
     public static final String COMMA = ",";
     public static final String EMAIL = "email";

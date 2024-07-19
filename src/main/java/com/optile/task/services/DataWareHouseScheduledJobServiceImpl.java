@@ -18,15 +18,13 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by NrapendraKumar on 03-10-2016.
+ * Created by NrapendraKumar
  */
 
 @Service
 @Qualifier(AppUtil.DATA_WARE_HOUSE)
 @Transactional
 public class DataWareHouseScheduledJobServiceImpl implements IScheduledJobService {
-
-    private static final Logger logger = LoggerFactory.getLogger(DataWareHouseScheduledJobServiceImpl.class.getName());
 
     @Autowired
     private DataWareHouseRepository dataWareHouseRepository;
@@ -35,6 +33,7 @@ public class DataWareHouseScheduledJobServiceImpl implements IScheduledJobServic
     public void executeJob() {
         InputStream inputStream = getClass().getResourceAsStream(AppUtil.DATA_WARE_HOUSE_CSV_FILE);
         try {
+            assert inputStream != null;
             LineIterator lineIterator = IOUtils.lineIterator(inputStream, AppUtil.UTF_8);
             while (lineIterator.hasNext()) {
                 String line = lineIterator.nextLine();

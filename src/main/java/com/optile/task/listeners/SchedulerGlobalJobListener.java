@@ -6,11 +6,12 @@ import com.optile.task.utils.SpringUtil;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.JobListener;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Map;
 
 /**
- * Created by NrapendraKumar on 03-10-2016.
+ * Created by NrapendraKumar.
  */
 
 public class SchedulerGlobalJobListener implements JobListener {
@@ -29,24 +30,22 @@ public class SchedulerGlobalJobListener implements JobListener {
     @Override
     public void jobToBeExecuted(JobExecutionContext jobExecutionContext) {
         String jobName = jobExecutionContext.getJobDetail().getKey().getName();
-        JobStatusService jobStatusService = jobStatusService();
-        Map<String,JobStatusEnum> map = jobStatusService.getJobStatusMap();
+      //  JobStatusService jobStatusService = jobStatusService();
+        Map<String,JobStatusEnum> map = JobStatusService.jobStatusMap;
         map.put(jobName, JobStatusEnum.QUEUED);
     }
 
     @Override
     public void jobExecutionVetoed(JobExecutionContext jobExecutionContext) {
         String jobName = jobExecutionContext.getJobDetail().getKey().getName();
-        JobStatusService jobStatusService = jobStatusService();
-        Map<String,JobStatusEnum> map = jobStatusService.getJobStatusMap();
+        Map<String,JobStatusEnum> map = JobStatusService.jobStatusMap;
         map.put(jobName, JobStatusEnum.FAILED);
     }
 
     @Override
     public void jobWasExecuted(JobExecutionContext jobExecutionContext, JobExecutionException e) {
         String jobName = jobExecutionContext.getJobDetail().getKey().getName();
-        JobStatusService jobStatusService = jobStatusService();
-        Map<String,JobStatusEnum> map = jobStatusService.getJobStatusMap();
+        Map<String,JobStatusEnum> map = JobStatusService.jobStatusMap;
         map.put(jobName, JobStatusEnum.SUCCESS);
     }
 

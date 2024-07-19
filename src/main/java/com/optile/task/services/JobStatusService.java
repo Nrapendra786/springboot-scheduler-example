@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Created by NrapendraKumar on 06-10-2016.
+ * Created by NrapendraKumar
  */
 
 @Component
+@Getter
+@Setter
 public class JobStatusService {
 
-    @Getter
-    @Setter
-    private static Map<String, JobStatusEnum> jobStatusMap = new ConcurrentHashMap<>();
+    public static Map<String, JobStatusEnum> jobStatusMap = new ConcurrentHashMap<>();
 }

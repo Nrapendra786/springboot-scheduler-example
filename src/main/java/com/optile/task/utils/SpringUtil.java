@@ -5,7 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by NrapendraKumar on 05-10-2016.
+ * Created by NrapendraKumar.
  */
 @Component
 public class SpringUtil {

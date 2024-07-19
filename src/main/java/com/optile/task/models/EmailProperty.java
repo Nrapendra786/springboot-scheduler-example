@@ -1,9 +1,5 @@
 package com.optile.task.models;
 
-/**
- * Created by NrapendraKumar on 05-10-2016.
- */
-
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

@@ -7,10 +7,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by NrapendraKumar on 03-10-2016.
+ * Created by NrapendraKumar
  */
 @Entity
 @Table(name = "data_ware_house")
+@Getter
+@Setter
 public class DataWareHouse implements Serializable {
 
     @Id
@@ -18,17 +20,11 @@ public class DataWareHouse implements Serializable {
     private long id;
 
     @Column(name = "username")
-    @Getter
-    @Setter
     private String userName;
 
     @Column(name = "lastname")
-    @Getter
-    @Setter
     private String lastName;
 
     @Column(name = "age")
-    @Getter
-    @Setter
     private int age;
 }
