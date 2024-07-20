@@ -1,13 +1,17 @@
+volumes:
+  mysql_db_data:
 services:
   mysql_db:
-    image: "mysql:8.1"
-    restart: always
+    image: mysql:8-debian
+    restart: unless-stopped
     ports:
-      - 3306:3306
+      - 3307:3306
     expose:
-      - 3306
+      - 3307
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USERNAME}
       MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql_db_data:/var/lib/mysql

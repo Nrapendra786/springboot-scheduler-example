@@ -1,4 +1,4 @@
-package com.spring.quartz.tests;
+package com.optile;
 
 import com.optile.task.utils.AppUtil;
 import com.optile.task.utils.NumberUtil;
@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by NrapendraKumar on 08-10-2016.
+ * Created by NrapendraKumar.
  */
 
 
@@ -34,23 +34,23 @@ public class EmailPropertyTest {
 
     @Test
     public void testPropertyFileSize() throws IOException {
-        Assert.assertTrue(readPropertyFile().size() == 25);
+        Assert.assertEquals(25, readPropertyFile().size());
     }
 
     @Test
     public void testEmailProperty() {
-        Assert.assertTrue(propertyFileMap.get("email.from").equals("trivajay259@gmail.com"));
-        Assert.assertTrue(propertyFileMap.get("email.to").equals("nrapendra.trivedi100@gmail.com,trivajay259@gmail.com"));
-        Assert.assertTrue(propertyFileMap.get("email.subject").equals("Hello"));
-        Assert.assertTrue(propertyFileMap.get("email.message").equals("I am from India and looking for the position of Java Developer"));
+        Assert.assertEquals("trivajay259@gmail.com", propertyFileMap.get("email.from"));
+        Assert.assertEquals("nrapendra.trivedi100@gmail.com,trivajay259@gmail.com", propertyFileMap.get("email.to"));
+        Assert.assertEquals("Hello", propertyFileMap.get("email.subject"));
+        Assert.assertEquals("I am from India and looking for the position of Java Software Engineer", propertyFileMap.get("email.message"));
     }
 
     @Test
     public void testJdbcProperty() {
-        Assert.assertTrue(propertyFileMap.get("spring.datasource.url").equals("jdbc:mysql://localhost/test?serverTimezone=UTC"));
-        Assert.assertTrue(propertyFileMap.get("spring.datasource.username").equals("root"));
-        Assert.assertTrue(propertyFileMap.get("spring.datasource.password").equals("nrapendra"));
-        Assert.assertTrue(propertyFileMap.get("spring.datasource.driver-class-name").equals("com.mysql.jdbc.Driver"));
+        Assert.assertEquals("jdbc:mysql://host.docker.internal:3306/test_db?createDatabaseIfNotExist=true&serverTimezone=UTC", propertyFileMap.get("spring.datasource.url"));
+        Assert.assertEquals("${MYSQL_USER}", propertyFileMap.get("spring.datasource.username"));
+        Assert.assertEquals("${MYSQL_PASSWORD}", propertyFileMap.get("spring.datasource.password"));
+        Assert.assertEquals("com.mysql.jdbc.Driver", propertyFileMap.get("spring.datasource.driver-class-name"));
     }
 
     private Map<String,String> readPropertyFile() throws IOException {

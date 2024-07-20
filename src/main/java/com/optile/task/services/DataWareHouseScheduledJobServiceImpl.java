@@ -5,15 +5,13 @@ import com.optile.task.exceptions.ScheduledJobException;
 import com.optile.task.repositories.DataWareHouseRepository;
 import com.optile.task.utils.AppUtil;
 import com.optile.task.utils.NumberUtil;
+import jakarta.transaction.Transactional;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -31,8 +29,8 @@ public class DataWareHouseScheduledJobServiceImpl implements IScheduledJobServic
 
     @Override
     public void executeJob() {
-        InputStream inputStream = getClass().getResourceAsStream(AppUtil.DATA_WARE_HOUSE_CSV_FILE);
         try {
+            InputStream inputStream = getClass().getResourceAsStream(AppUtil.DATA_WARE_HOUSE_CSV_FILE);
             assert inputStream != null;
             LineIterator lineIterator = IOUtils.lineIterator(inputStream, AppUtil.UTF_8);
             while (lineIterator.hasNext()) {

@@ -1,4 +1,4 @@
-package com.spring.quartz.tests;
+package com.optile;
 
 import com.optile.task.exceptions.ScheduledJobException;
 import com.optile.task.utils.AppUtil;
@@ -16,53 +16,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by NrapendraKumar on 03-10-2016.
+ * Created by NrapendraKumar.
  */
 
 public class DataWarehouseCsvFileTest {
 
 
-    private List<DataWareHouseModelTest> dataWareHouseModelFileData = null;
-    private List<DataWareHouseModelTest> dataWareHouseModelTestData = null;
-    private List<DataWareHouseModelTest> dataWareHouseModelTestIncorrectData = null;
+    private List<DataWareHouseModelTest> dataWareHouseModelFileData;
+    private List<DataWareHouseModelTest> dataWareHouseModelTestData;
+    private List<DataWareHouseModelTest> dataWareHouseModelTestIncorrectData;
 
 
     @Before
     public void initializeList(){
-        dataWareHouseModelFileData = datawareHouseFileData();
+        dataWareHouseModelFileData = dataWareHouseFileData();
         dataWareHouseModelTestData = getCorrectDataWareHouseList();
         dataWareHouseModelTestIncorrectData = getInCorrectDataWareHouseList();
     }
 
     @Test
     public void testPassDataWareHouseData() throws IOException {
-         Assert.assertTrue(dataWareHouseModelFileData.size() == dataWareHouseModelTestData.size());
+        Assert.assertEquals(dataWareHouseModelFileData.size(), dataWareHouseModelTestData.size());
         for(int iForloop = NumberUtil.ZERO ; iForloop < dataWareHouseModelTestData.size() ; iForloop++) {
             DataWareHouseModelTest dataWareHouseModelFileDataTest = dataWareHouseModelFileData.get(iForloop);
             DataWareHouseModelTest dataWareHouseModelTest = dataWareHouseModelTestData.get(iForloop);
 
-            Assert.assertTrue(dataWareHouseModelFileDataTest.getUserName().equals(dataWareHouseModelTest.getUserName()));
-            Assert.assertTrue(dataWareHouseModelFileDataTest.getLastName().equals(dataWareHouseModelTest.getLastName()));
-            Assert.assertTrue(dataWareHouseModelFileDataTest.getAge() == dataWareHouseModelTest.getAge());
+            Assert.assertEquals(dataWareHouseModelFileDataTest.getUserName(), dataWareHouseModelTest.getUserName());
+            Assert.assertEquals(dataWareHouseModelFileDataTest.getLastName(), dataWareHouseModelTest.getLastName());
+            Assert.assertEquals(dataWareHouseModelFileDataTest.getAge(), dataWareHouseModelTest.getAge());
         }
     }
 
     @Test
     public void testFailDataWareHouseData() throws IOException {
-        Assert.assertFalse(dataWareHouseModelFileData.size() == dataWareHouseModelTestIncorrectData.size() + 1);
+        Assert.assertNotEquals(dataWareHouseModelFileData.size(), dataWareHouseModelTestIncorrectData.size() + 1);
 
         for(int iForloop = NumberUtil.ZERO ; iForloop < dataWareHouseModelTestIncorrectData.size() ; iForloop++) {
 
             DataWareHouseModelTest dataWareHouseModelFileDataTest = dataWareHouseModelFileData.get(iForloop);
             DataWareHouseModelTest dataWareHouseModelTestFail = dataWareHouseModelTestIncorrectData.get(iForloop);
 
-            Assert.assertFalse(dataWareHouseModelFileDataTest.getUserName().equals(dataWareHouseModelTestFail.getUserName()));
-            Assert.assertFalse(dataWareHouseModelFileDataTest.getLastName().equals(dataWareHouseModelTestFail.getLastName()));
-            Assert.assertFalse(dataWareHouseModelFileDataTest.getAge() == dataWareHouseModelTestFail.getAge());
+            Assert.assertNotEquals(dataWareHouseModelFileDataTest.getUserName(), dataWareHouseModelTestFail.getUserName());
+            Assert.assertNotEquals(dataWareHouseModelFileDataTest.getLastName(), dataWareHouseModelTestFail.getLastName());
+            Assert.assertNotEquals(dataWareHouseModelFileDataTest.getAge(), dataWareHouseModelTestFail.getAge());
         }
     }
 
-    public List<DataWareHouseModelTest> datawareHouseFileData() {
+    private List<DataWareHouseModelTest> dataWareHouseFileData() {
         InputStream inputStream = getClass().getResourceAsStream(AppUtil.DATA_WARE_HOUSE_CSV_FILE);
         List<DataWareHouseModelTest> dataWareHouseModelTests = new ArrayList<>();
         try {
@@ -81,7 +81,7 @@ public class DataWarehouseCsvFileTest {
         return dataWareHouseModelTests;
     }
 
-    public List<DataWareHouseModelTest> getCorrectDataWareHouseList() {
+    private List<DataWareHouseModelTest> getCorrectDataWareHouseList() {
         List<DataWareHouseModelTest> dataWareHouseModelTests = new ArrayList<>();
         dataWareHouseModelTests.add(new DataWareHouseModelTest("Jill", "Billy", 24));
         dataWareHouseModelTests.add(new DataWareHouseModelTest("Joe", "Laufer", 34));
@@ -91,7 +91,7 @@ public class DataWarehouseCsvFileTest {
         return dataWareHouseModelTests;
     }
 
-    public List<DataWareHouseModelTest> getInCorrectDataWareHouseList() {
+    private List<DataWareHouseModelTest> getInCorrectDataWareHouseList() {
         List<DataWareHouseModelTest> dataWareHouseModelTests = new ArrayList<>();
         dataWareHouseModelTests.add(new DataWareHouseModelTest("JillPing", "Billy1", 27));
         dataWareHouseModelTests.add(new DataWareHouseModelTest("Joe1", "Laufer1", 39));
@@ -103,7 +103,7 @@ public class DataWarehouseCsvFileTest {
 
 
     @Data
-    private class DataWareHouseModelTest {
+    private static class DataWareHouseModelTest {
         private String userName;
         private String lastName;
         private int age;

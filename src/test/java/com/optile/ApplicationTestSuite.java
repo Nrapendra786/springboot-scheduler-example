@@ -1,10 +1,10 @@
-package com.spring.quartz.tests;
+package com.optile;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- * Created by NrapendraKumar on 08-10-2016.
+ * Created by NrapendraKumar.
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

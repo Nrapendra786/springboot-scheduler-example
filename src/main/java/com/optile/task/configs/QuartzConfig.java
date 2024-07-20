@@ -41,7 +41,6 @@ public class QuartzConfig {
     @Autowired
     private CustomTriggerFactory customTriggerFactory;
 
-
     @Bean
     public AutoWiringSpringBeanJobFactory autoWiringSpringBeanJobFactory(){
         return new AutoWiringSpringBeanJobFactory();
@@ -54,23 +53,14 @@ public class QuartzConfig {
 
     @Bean
     public SchedulerFactoryBean schedulerFactoryBean() throws SchedulerException, IOException {
-
         SchedulerFactoryBean schedulerFactoryBean = new SchedulerFactoryBean();
-
         CronTriggerFactoryBean cronTriggerFactoryDataWareHouseBean = customTriggerFactory.cronTriggerFactoryDataWareHouseBean();
-
         CronTriggerFactoryBean cronTriggerFactoryEmailBean = customTriggerFactory.cronTriggerFactoryEmailBean();
-
         schedulerFactoryBean.setTriggers(cronTriggerFactoryDataWareHouseBean.getObject(),cronTriggerFactoryEmailBean.getObject());
-
         schedulerFactoryBean.setJobFactory(autoWiringSpringBeanJobFactory());
-
         schedulerFactoryBean.setQuartzProperties(quartzProperties());
-
         schedulerFactoryBean.setGlobalJobListeners(new SchedulerGlobalJobListener());
-
         schedulerFactoryBean.setDataSource(dataSource);
-
         return schedulerFactoryBean;
     }
 
