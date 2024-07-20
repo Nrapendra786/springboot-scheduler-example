@@ -21,14 +21,13 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.util.Properties;
 
-//import com.spring.quartz.example.jobs.IndexJob;
 
 /**
- * Created by NrapendraKumar on 02-10-2016.
+ * Created by NrapendraKumar
  */
 @Configuration
 @ComponentScan({AppUtil.JOB_PACKAGE_NAME,AppUtil.FACTORY_PACKAGE_NAME})
-public class QuartzConfiguration {
+public class QuartzConfig {
 
     @Autowired
     private DataSource dataSource;
