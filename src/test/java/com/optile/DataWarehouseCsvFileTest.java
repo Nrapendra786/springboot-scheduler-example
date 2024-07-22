@@ -3,7 +3,10 @@ package com.optile;
 import com.optile.task.exceptions.ScheduledJobException;
 import com.optile.task.utils.AppUtil;
 import com.optile.task.utils.NumberUtil;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.io.LineIterator;
 import org.junit.Assert;
@@ -102,17 +105,13 @@ public class DataWarehouseCsvFileTest {
     }
 
 
-    @Data
+    @AllArgsConstructor
+    @Getter
+    @Setter
     private static class DataWareHouseModelTest {
         private String userName;
         private String lastName;
         private int age;
-
-        public DataWareHouseModelTest(String userName, String lastName, int age) {
-            this.userName = userName;
-            this.lastName = lastName;
-            this.age = age;
-        }
     }
 
 }

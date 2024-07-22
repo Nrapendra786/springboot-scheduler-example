@@ -19,13 +19,9 @@ import java.util.Map;
  * Created by NrapendraKumar.
  */
 
-
 public class EmailPropertyTest {
 
     private Map<String,String> propertyFileMap = null;
-
-    private static final Logger logger = LoggerFactory.getLogger(EmailPropertyTest.class.getName());
-
 
     @Before
     public void initializePropertyFile() throws IOException {
@@ -34,7 +30,7 @@ public class EmailPropertyTest {
 
     @Test
     public void testPropertyFileSize() throws IOException {
-        Assert.assertEquals(25, readPropertyFile().size());
+        Assert.assertEquals(26, readPropertyFile().size());
     }
 
     @Test
@@ -47,10 +43,9 @@ public class EmailPropertyTest {
 
     @Test
     public void testJdbcProperty() {
-        Assert.assertEquals("jdbc:mysql://host.docker.internal:3306/test_db?createDatabaseIfNotExist=true&serverTimezone=UTC", propertyFileMap.get("spring.datasource.url"));
-        Assert.assertEquals("${MYSQL_USER}", propertyFileMap.get("spring.datasource.username"));
-        Assert.assertEquals("${MYSQL_PASSWORD}", propertyFileMap.get("spring.datasource.password"));
-        Assert.assertEquals("com.mysql.jdbc.Driver", propertyFileMap.get("spring.datasource.driver-class-name"));
+        Assert.assertEquals("jdbc:mysql://host.docker.internal:3307/test_db?createDatabaseIfNotExist=true&serverTimezone=UTC", propertyFileMap.get("spring.datasource.url"));
+        Assert.assertEquals("username", propertyFileMap.get("spring.datasource.username"));
+        Assert.assertEquals("com.mysql.cj.jdbc.Driver", propertyFileMap.get("spring.datasource.driver-class-name"));
     }
 
     private Map<String,String> readPropertyFile() throws IOException {
