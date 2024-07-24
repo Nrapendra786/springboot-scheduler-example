@@ -1,4 +1,4 @@
-added sonarcloud 
+
 Java 17 and Docker must be installed in the system  <br/>
 cd [SPECIFY PROJECT PATH]   <br/>
 docker-compose up -d        <bader/>
