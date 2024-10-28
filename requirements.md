@@ -3,12 +3,12 @@
 Enable the retail organization to achieve a unified view of customer interactions and data from multiple channels (e.g., CRM, order management, social media, etc.) to drive customer personalization, support, and targeted marketing.
 
 Components Involved
-# Salesforce – Acts as the central CRM for managing customer data, including profiles, purchase history, and support interactions.
-# MuleSoft – Integrates data from Salesforce, external systems, and Kafka streams. MuleSoft APIs standardize and manage data flow and orchestration.
-# Java & Spring Boot – Backend services built in Spring Boot handle business logic, provide REST APIs, and consume/produce messages in Kafka.
-# Apache Kafka – Manages real-time data streams, capturing customer interactions across various systems and enabling asynchronous processing.
-# Solution Architecture
-# Customer Interactions & Data Ingestion
+Salesforce – Acts as the central CRM for managing customer data, including profiles, purchase history, and support interactions.
+MuleSoft – Integrates data from Salesforce, external systems, and Kafka streams. MuleSoft APIs standardize and manage data flow and orchestration.
+Java & Spring Boot – Backend services built in Spring Boot handle business logic, provide REST APIs, and consume/produce messages in Kafka.
+Apache Kafka – Manages real-time data streams, capturing customer interactions across various systems and enabling asynchronous processing.
+Solution Architecture
+Customer Interactions & Data Ingestion
 
 Every customer interaction (e.g., purchase, support call, social media mention) across multiple channels (e-commerce platform, social media, in-store, etc.) is captured in real-time.
 MuleSoft APIs orchestrate this data by integrating with these various sources and send relevant information to Salesforce.
